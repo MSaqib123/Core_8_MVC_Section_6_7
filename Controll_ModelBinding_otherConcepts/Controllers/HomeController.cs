@@ -61,23 +61,48 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
         //    return new FileContentResult(bytes, "application/pdf");
         //}
 
-        //______ shortest way File  _____
-        //Inharit the form by 
-        //___ VertualFile __
+
+        ////______ shortest way File  _____
+        ////Inharit the form by 
+        ////___ VertualFile __
+        //[Route("download1")]
+        //public VirtualFileResult download1()
+        //{
+        //    return File("/excelSheet.xlsx", "application/pdf");
+        //}
+        ////___ physicalFile __
+        //[Route("download2")]
+        //public PhysicalFileResult download2()
+        //{
+        //    return PhysicalFile(@"C:\AspnetCore\excelSheet.xlsx", "application/pdf");
+        //}
+        ////___ FileContentResult __
+        //[Route("download3")]
+        //public FileContentResult download3()
+        //{
+        //    var bytes = System.IO.File.ReadAllBytes(@"C:\AspnetCore\excelSheet.xlsx");
+        //    return File(bytes, "application/pdf");
+        //}
+        #endregion
+
+        //=============================================
+        //--------- 4. IActionResult --------------
+        //=============================================
+        #region IActionResult
         [Route("download1")]
-        public VirtualFileResult download1()
+        public IActionResult download1()
         {
             return File("/excelSheet.xlsx", "application/pdf");
         }
         //___ physicalFile __
         [Route("download2")]
-        public PhysicalFileResult download2()
+        public IActionResult download2()
         {
             return PhysicalFile(@"C:\AspnetCore\excelSheet.xlsx", "application/pdf");
         }
         //___ FileContentResult __
         [Route("download3")]
-        public FileContentResult download3()
+        public IActionResult download3()
         {
             var bytes = System.IO.File.ReadAllBytes(@"C:\AspnetCore\excelSheet.xlsx");
             return File(bytes, "application/pdf");
