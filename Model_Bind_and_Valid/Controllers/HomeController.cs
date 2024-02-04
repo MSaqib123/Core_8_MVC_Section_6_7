@@ -63,6 +63,25 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
         }
         #endregion
 
-
+        //=============================================
+        //--------- 5. Model Validation + model_State ---------
+        //=============================================
+        #region Model_Validation_modelState
+        //1.create perons model with  Attributes
+        [Route("ModelValdation")]
+        public IActionResult ModelValdation(Person person)
+        {
+            if (ModelState.IsValid) 
+            {
+                //jb sb ok ho to 
+                return View("Good mera bchaa");
+            }
+            else
+            {
+                return NotFound();
+            }
+            return View();
+        }
+        #endregion
     }
 }
