@@ -30,6 +30,6 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
             return "This is HomePage";
         }
 
-        
+
     }
 }
