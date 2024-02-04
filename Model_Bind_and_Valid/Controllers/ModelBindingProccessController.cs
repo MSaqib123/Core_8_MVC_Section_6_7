@@ -18,7 +18,6 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
             {
                 return BadRequest("Book id is not supplied");
             }
-
             //book id Can't be empty
             if (bookid == null)
             {
