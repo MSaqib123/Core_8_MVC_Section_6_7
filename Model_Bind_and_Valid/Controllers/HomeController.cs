@@ -45,5 +45,24 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
         }
         #endregion
 
+        //=============================================
+        //--------- 4. form-urlencoded and form-data ---------
+        //=============================================
+        #region form-urlencoded and form-data 
+        //___ 1. form-urlencoded ___
+        //for small formData 
+        //file can not be add
+
+        //___ 1. form-data ___
+        //for larg data
+        //file  allewed
+        [Route("FormData_incodeFormData")]
+        public IActionResult FormData_incodeFormData(int id, Book books)
+        {
+            return View();
+        }
+        #endregion
+
+
     }
 }
