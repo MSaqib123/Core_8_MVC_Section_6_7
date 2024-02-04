@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Model_Bind_and_Valid.Models;
 using System.Security.Cryptography;
 
 namespace Controll_ModelBinding_otherConcepts.Controllers
@@ -32,5 +33,17 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
             return View();
         }
         #endregion
+
+        //=============================================
+        //--------- 3. ModelClass ---------
+        //=============================================
+        #region ModelClass
+        [Route("ModelClass")]
+        public IActionResult ModelClass(Book books)
+        {
+            return View();
+        }
+        #endregion
+
     }
 }
