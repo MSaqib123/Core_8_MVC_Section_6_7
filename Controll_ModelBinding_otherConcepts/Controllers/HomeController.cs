@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 namespace Controll_ModelBinding_otherConcepts.Controllers
 {
     [Controller]
-    public class HomeController
+    public class HomeController:Controller
     {
         //=============================================
         //_______ 1. Adding Controller Action __________
@@ -23,6 +23,7 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
         }
         #endregion
 
+
         //=============================================
         //--------- 2. Adding Default Aciton ---------
         //=============================================
@@ -37,29 +38,50 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
 
 
         //=============================================
-        //------------ 3. FileResult --------------
+        //--------- 3. FileResult --------------
         //=============================================
         #region FileResult
+        ////___ VertualFile __
+        //[Route("download1")]
+        //public VirtualFileResult download1()
+        //{
+        //    return new VirtualFileResult("/excelSheet.xlsx","application/pdf");
+        //}
+        ////___ physicalFile __
+        //[Route("download2")]
+        //public PhysicalFileResult download2()
+        //{
+        //    return new PhysicalFileResult(@"C:\AspnetCore\excelSheet.xlsx", "application/pdf");
+        //}
+        ////___ FileContentResult __
+        //[Route("download3")]
+        //public FileContentResult download3()
+        //{
+        //    var bytes = System.IO.File.ReadAllBytes(@"C:\AspnetCore\excelSheet.xlsx");
+        //    return new FileContentResult(bytes, "application/pdf");
+        //}
+
+        //______ shortest way File  _____
+        //Inharit the form by 
         //___ VertualFile __
         [Route("download1")]
         public VirtualFileResult download1()
         {
-            return new VirtualFileResult("/excelSheet.xlsx","application/pdf");
+            return File("/excelSheet.xlsx", "application/pdf");
         }
         //___ physicalFile __
         [Route("download2")]
         public PhysicalFileResult download2()
         {
-            return new PhysicalFileResult(@"C:\AspnetCore\excelSheet.xlsx", "application/pdf");
+            return PhysicalFile(@"C:\AspnetCore\excelSheet.xlsx", "application/pdf");
         }
         //___ FileContentResult __
         [Route("download3")]
         public FileContentResult download3()
         {
             var bytes = System.IO.File.ReadAllBytes(@"C:\AspnetCore\excelSheet.xlsx");
-            return new FileContentResult(bytes, "application/pdf");
+            return File(bytes, "application/pdf");
         }
-        //___ Common File  __
         #endregion
     }
 }
