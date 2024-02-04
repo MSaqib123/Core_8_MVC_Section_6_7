@@ -78,9 +78,29 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
             }
             else
             {
-                return NotFound();
+                //_____________ long Code 1 ________
+                //List<string> errorList = new List<string>();
+                //foreach (var value in ModelState.Values)
+                //{
+                //    foreach (var error in value.Errors)
+                //    {
+                //        errorList.Add(error.ErrorMessage);
+                //    }
+                //}
+                //_____________ short LamdaExpress Linque ________
+                //List<string> errorList = new List<string>();
+                //ModelState.Values
+                //    .SelectMany(value => value.Errors) //outer loop
+                //    .Select(err => err.ErrorMessage).ToList();  //inner loop
+                //string errors = string.Join("\n",errorList);
+
+                //_____________ short LamdaExpress Linque ________
+                string error = string.Join("\n", ModelState.Values
+                    .SelectMany(value => value.Errors) //outer loop
+                    .Select(err => err.ErrorMessage));  //inner loop
+
+                return NotFound(error);
             }
-            return View();
         }
         #endregion
     }
