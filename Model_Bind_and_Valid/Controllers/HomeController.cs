@@ -103,5 +103,31 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
             }
         }
         #endregion
+
+
+        //=============================================
+        //--------- 5. All Validation Attributes ---------
+        //=============================================
+        #region CustomerModel
+        [Route("ModelValdation")]
+        public IActionResult CustomerValdation(Person person)
+        {
+            if (ModelState.IsValid) 
+            {
+                //jb sb ok ho to 
+                return View("Good mera bchaa");
+            }
+            else
+            {
+                //_____________ short LamdaExpress Linque ________
+                string error = string.Join("\n", ModelState.Values
+                    .SelectMany(value => value.Errors) //outer loop
+                    .Select(err => err.ErrorMessage));  //inner loop
+
+                return NotFound(error);
+            }
+        }
+        #endregion
+
     }
 }
