@@ -74,7 +74,7 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
         #endregion
 
         //=============================================
-        //--------- 4. form-urlencoded and form-data ---------
+        //------ 4. form-urlencoded and form-data ------
         //=============================================
         #region form-urlencoded and form-data 
         //___ 1. form-urlencoded ___
@@ -92,7 +92,7 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
         #endregion
 
         //=============================================
-        //--------- 5. Model Validation + model_State ---------
+        //------- 5. Model Validation + model_State ------
         //=============================================
         #region Model_Validation_modelState
         //1.create perons model with  Attributes
@@ -134,7 +134,7 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
 
 
         //=============================================
-        //--------- 6. All Validation Attributes ---------
+        //------- 6. All Validation Attributes --------
         //=============================================
         #region All_Validation_Attribute
         [Route("AllValidationAttri")]
@@ -159,7 +159,7 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
 
 
         //=============================================
-        //--------- 7. CustomValidation for SingleProp  ---------
+        //------ 7. CustomValidation for SingleProp  ------
         //=============================================
         #region All_Validation_Attribute
         [Route("CustomerValdation")]
@@ -182,5 +182,12 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
         }
         #endregion
 
+        //=============================================
+        //---------- 8. IValidatableObject ------------
+        //=============================================
+        #region IValidatableObject
+        //if u don't want to create reusalbe Validatin then use IValidationobject
+
+        #endregion
     }
 }
