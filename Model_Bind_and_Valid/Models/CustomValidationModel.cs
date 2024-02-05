@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Model_Bind_and_Valid.CustomValidators;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -14,5 +15,7 @@ namespace Model_Bind_and_Valid.Models
         public string? PersonName { get; set; }
 
         //________________ CustomValidation _____________
+        [MinimumYearValidator(ErrorMessage = "Minimum year allowed is 2000")]
+        public DateTime? DOB { get; set; }
     }
 }
