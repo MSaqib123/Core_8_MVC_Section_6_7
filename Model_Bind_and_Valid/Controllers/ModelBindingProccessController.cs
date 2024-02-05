@@ -187,7 +187,25 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
         //=============================================
         #region IValidatableObject
         //if u don't want to create reusalbe Validatin then use IValidationobject
+        //its spacefict to particular modal class
+        [Route("IValidatableObject")]
+        public IActionResult IValidatableObject(IValidateCustomValidationModel val)
+        {
+            if (ModelState.IsValid)
+            {
+                //jb sb ok ho to 
+                return View("Good mera bchaa");
+            }
+            else
+            {
+                //_____________ short LamdaExpress Linque ________
+                string error = string.Join("\n", ModelState.Values
+                    .SelectMany(value => value.Errors) //outer loop
+                    .Select(err => err.ErrorMessage));  //inner loop
 
+                return NotFound(error);
+            }
+        }
         #endregion
     }
 }
