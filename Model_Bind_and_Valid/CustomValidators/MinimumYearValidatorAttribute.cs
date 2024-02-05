@@ -4,7 +4,7 @@ namespace Model_Bind_and_Valid.CustomValidators
 {
     public class MinimumYearValidatorAttribute:ValidationAttribute
     {
-        public int MinimumYear { get; set; }
+        public int MinimumYear { get; set; } = 2000;
         public MinimumYearValidatorAttribute(){}
         public MinimumYearValidatorAttribute(int minimuYear)
         {
