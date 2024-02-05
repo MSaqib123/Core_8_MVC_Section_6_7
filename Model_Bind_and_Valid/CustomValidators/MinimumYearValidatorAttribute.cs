@@ -22,8 +22,12 @@ namespace Model_Bind_and_Valid.CustomValidators
                 if (date.Year >= MinimumYear)
                 {
                     //return new ValidationResult("Minimum year allowed is 2000");
+
                     //____ PreDefined ErrorMessage ___
-                    return new ValidationResult(ErrorMessage);
+                    //return new ValidationResult(ErrorMessage);
+
+                    //____ PreDefined ErrorMessage + CurrentValue ___
+                    return new ValidationResult(string.Format(ErrorMessage,MinimumYear));
                 }
                 else
                 {
