@@ -207,5 +207,42 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
             }
         }
         #endregion
+
+        //=============================================
+        //---------- 9. Bind & BindNever ------------
+        //=============================================
+        #region Bind_BindNever
+        //______ Bind _____
+        //ModelBinding by default  sari Value ko MOdel sa bind krtaa ha
+        //if want to bind only Specific value then we use bind
+
+        //______ BindNever _____
+        //its oposite to Bind
+        [Route("Bind_BindNevers")]
+        public IActionResult Bind_BindNevers(
+            //Specifice Binding
+            //[Bind(nameof(Bind_BindNever.SirName),nameof(Bind_BindNever.Password))] 
+
+            //Bind all
+            [Bind(nameof(Bind_BindNever))]
+            Bind_BindNever val
+            )
+        {
+            if (ModelState.IsValid)
+            {
+                //jb sb ok ho to 
+                return View("Good mera bchaa");
+            }
+            else
+            {
+                //_____________ short LamdaExpress Linque ________
+                string error = string.Join("\n", ModelState.Values
+                    .SelectMany(value => value.Errors) //outer loop
+                    .Select(err => err.ErrorMessage));  //inner loop
+
+                return NotFound(error);
+            }
+        }
+        #endregion
     }
 }
