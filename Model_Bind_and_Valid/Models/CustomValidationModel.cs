@@ -16,7 +16,8 @@ namespace Model_Bind_and_Valid.Models
 
         //________________ CustomValidation _____________
         //[MinimumYearValidator(2000, ErrorMessage = "Minimum year allowed is 2000")]
-        [MinimumYearValidator(2000, ErrorMessage = "Minimum year allowed is {0}")]
+        //[MinimumYearValidator(2010, ErrorMessage = "Minimum year allowed is {0}")]
+        [MinimumYearValidator(2016)]
         public DateTime? DOB { get; set; }
     }
 }
