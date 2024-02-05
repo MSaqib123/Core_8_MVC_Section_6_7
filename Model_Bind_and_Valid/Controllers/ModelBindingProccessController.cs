@@ -224,8 +224,7 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
             //[Bind(nameof(Bind_BindNever.SirName),nameof(Bind_BindNever.Password))] 
 
             //Bind all
-            [Bind(nameof(Bind_BindNever))]
-            Bind_BindNever val
+            [Bind(nameof(Bind_BindNever))] Bind_BindNever val
             )
         {
             if (ModelState.IsValid)
