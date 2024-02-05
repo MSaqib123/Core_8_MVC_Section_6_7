@@ -282,14 +282,44 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
         #endregion
 
         //=============================================
-        //---------- 11. CustomModelBinder ------------
+        //---------- 11. CustomModelBinder (Importent) ------------
         //=============================================
         //For Complex logic in RealWords Project we use custom Binding
         #region CustmModelBinder
-        [Route("FromBody")]
+        [Route("CustmModelBinder")]
         public IActionResult CustmModelBinder(
             [FromBody]
             [ModelBinder(BinderType =typeof(Custm_ModelBinder))]
+            Custm_ModelBinder val
+            )
+        {
+            if (ModelState.IsValid)
+            {
+                //jb sb ok ho to 
+                return View("Good mera bchaa");
+            }
+            else
+            {
+                //_____________ short LamdaExpress Linque ________
+                string error = string.Join("\n", ModelState.Values
+                    .SelectMany(value => value.Errors) //outer loop
+                    .Select(err => err.ErrorMessage));  //inner loop
+
+                return NotFound(error);
+            }
+        }
+        #endregion
+
+        //=============================================
+        //---------- 12. Making GlobelCustomModelBinder (Importent) ------------
+        //=============================================
+        #region globalCustmModelBinder
+        //Making CustomModelBinder Global for Complete project
+        //in Project where the Mode Custm_ModelBinder is used it will applyied on all
+        [Route("globalCustmModelBinder")]
+        public IActionResult GlobelCustomModelBinder(
+            [FromBody]
+            //[ModelBinder(BinderType =typeof(Custm_ModelBinder))]
             Custm_ModelBinder val
             )
         {
