@@ -243,5 +243,72 @@ namespace Controll_ModelBinding_otherConcepts.Controllers
             }
         }
         #endregion
+
+        //=============================================
+        //---------- 10. FromBody (Importent) ------------
+        //=============================================
+        #region FromBody __ by PostMan
+        //its convert Json or XML  to   ModelBindign Model 
+        /*Json
+         {
+            name : "",
+            email : "".
+            ...
+          }
+         */
+        /*Xml
+         <Bind_BindNever>
+            <Eamil>m43577535@gmail.com</Email>
+         </Bind_BindNever>
+         */
+        [Route("FromBody")]
+        public IActionResult FromBody([FromBody] Bind_BindNever val)
+        {
+            if (ModelState.IsValid)
+            {
+                //jb sb ok ho to 
+                return View("Good mera bchaa");
+            }
+            else
+            {
+                //_____________ short LamdaExpress Linque ________
+                string error = string.Join("\n", ModelState.Values
+                    .SelectMany(value => value.Errors) //outer loop
+                    .Select(err => err.ErrorMessage));  //inner loop
+
+                return NotFound(error);
+            }
+        }
+        #endregion
+
+        //=============================================
+        //---------- 11. CustomModelBinder ------------
+        //=============================================
+        //For Complex logic in RealWords Project we use custom Binding
+        #region CustmModelBinder
+        [Route("FromBody")]
+        public IActionResult CustmModelBinder(
+            [FromBody]
+            [ModelBinder(BinderType =typeof(Custm_ModelBinder))]
+            Custm_ModelBinder val
+            )
+        {
+            if (ModelState.IsValid)
+            {
+                //jb sb ok ho to 
+                return View("Good mera bchaa");
+            }
+            else
+            {
+                //_____________ short LamdaExpress Linque ________
+                string error = string.Join("\n", ModelState.Values
+                    .SelectMany(value => value.Errors) //outer loop
+                    .Select(err => err.ErrorMessage));  //inner loop
+
+                return NotFound(error);
+            }
+        }
+        #endregion
+
     }
 }
